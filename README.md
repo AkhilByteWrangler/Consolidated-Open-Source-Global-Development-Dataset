@@ -38,6 +38,36 @@ Big thanks to my professor for the insightful and unexpectedly lengthy chat—it
 2. Explore the dataset **[https://www.kaggle.com/datasets/akhilchhh/cosgdd](https://www.kaggle.com/datasets/akhilchhh/cosgdd)**
 4. Check out the codebase in this repo to understand how the data was processed and engineered.
 
+## 🚀 How to Run?
+
+1. **Install Requirements**  
+   Clone the repository and install all necessary dependencies:  
+   ```bash
+   git clone https://github.com/AkhilByteWrangler/Consolidated-Open-Source-Global-Development-Dataset.git
+   cd Consolidated-Open-Source-Global-Development-Dataset
+   pip install -r requirements.txt
+   ```
+2. **Run the Main Script**
+   Preprocess the raw data by running the main script:
+   ```bash
+   python main-script.py
+   ```
+3. **Run the Feature Engineering Script**
+    Generate the feature-engineered columns by executing the feature engineering script:
+    
+    ```bash
+    python feature_engineering_script.py
+    
+    ```
+4. **Launch the Streamlit Dashboard**
+   Explore the dataset visually using the interactive Streamlit dashboard:
+   ```bash
+   streamlit run eda-streamlit-dashboard.py
+   ```
+   
+That's it! You're all set to dive into the dataset. 🎉
+
+
 ## 🌍 Ethical Statement
 This dataset was created with a commitment to fairness, inclusivity, and sustainability. All data are aggregated and anonymized to ensure compliance with international privacy standards.
 
