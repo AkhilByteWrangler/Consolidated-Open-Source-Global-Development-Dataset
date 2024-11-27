@@ -34,7 +34,7 @@ Big thanks to my professor for the insightful and unexpectedly lengthy chat—it
 - Build machine learning models or conduct hypothesis testing with robust statistical power.
 
 ## ⚡️ Get Started
-1. Explore the **[Streamlit Dashboard](https://cosgdd.streamlit.app/)** to visualize key metrics.
+1. Explore the **[Streamlit Dashboard](https://cosgdd.streamlit.app/)** to visualize key metrics. The LIME explanation graph will take time to load!
 2. Explore the dataset **[https://www.kaggle.com/datasets/akhilchhh/cosgdd](https://www.kaggle.com/datasets/akhilchhh/cosgdd)**
 4. Check out the codebase in this repo to understand how the data was processed and engineered.
 
