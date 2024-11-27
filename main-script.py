@@ -14,17 +14,17 @@ warnings.filterwarnings('ignore')  # Like muting that one group chat during fina
 
 # File paths: AKA the syllabus for this data project. Let's try to stay organized... for once.
 FILE_PATHS = {
-    "whr": "world_happiness_report.xls",  # Because we all want to know who's acing happiness.
-    "tedi": "TheEconomistDemocracyIndex.xlsx",  # Democracy, ranked. Like your GPA, but for countries.
-    "energy": "energy.csv",  # Renewable, non-renewable, and that one time you tried to "renew" your life energy.
-    "food": "food_supply.csv",  # Fuel for both humans and datasets.
-    "deaths": "deaths-in-armed-conflicts-based-on-where-they-occurred.csv",  # Dark, but necessary data.
-    "air_pollution": "long-run-air-pollution.csv",  # Breathing isn’t free after all.
-    "hdi": "human-development-index.csv",  # Because it’s not just about grades; it’s about growth (or so they say).
-    "rule_of_law": "rule-of-law-index.csv",  # Order in the court! Or in the dataset, at least.
-    "median_age": "median-age.csv",  # Who’s aging gracefully? Spoiler: Not your finals week self.
-    "urban_population": "share-urban-and-rural-population.csv",  # City life vs. the countryside – stats edition.
-    "tax_revenue": "tax-revenues-as-a-share-of-gdp-unu-wider.csv",  # Paying taxes is inevitable. Knowing about them is optional.
+    "whr": "data/world_happiness_report.xls",  # Because we all want to know who's acing happiness.
+    "tedi": "data/TheEconomistDemocracyIndex.xlsx",  # Democracy, ranked. Like your GPA, but for countries.
+    "energy": "data/energy.csv",  # Renewable, non-renewable, and that one time you tried to "renew" your life energy.
+    "food": "data/food_supply.csv",  # Fuel for both humans and datasets.
+    "deaths": "data/deaths-in-armed-conflicts-based-on-where-they-occurred.csv",  # Dark, but necessary data.
+    "air_pollution": "data/long-run-air-pollution.csv",  # Breathing isn’t free after all.
+    "hdi": "data/human-development-index.csv",  # Because it’s not just about grades; it’s about growth (or so they say).
+    "rule_of_law": "data/rule-of-law-index.csv",  # Order in the court! Or in the dataset, at least.
+    "median_age": "data/median-age.csv",  # Who’s aging gracefully? Spoiler: Not your finals week self.
+    "urban_population": "data/share-urban-and-rural-population.csv",  # City life vs. the countryside – stats edition.
+    "tax_revenue": "data/tax-revenues-as-a-share-of-gdp-unu-wider.csv",  # Paying taxes is inevitable. Knowing about them is optional.
 }
 
 # Function to load data. Think of it as assembling your study notes before a big exam (No ChatGPT, in our days, Chegg maybe!).
@@ -42,13 +42,22 @@ def load_data():
         "median_age": pd.read_csv(FILE_PATHS["median_age"]), 
         "urban_population": pd.read_csv(FILE_PATHS["urban_population"]),
         "tax_revenue": pd.read_csv(FILE_PATHS["tax_revenue"]), 
+    }
+    return data  
 
-    def process_whr_dataset(whr):
-    """Clean and standardize the World Happiness Report dataset."""
-    # Tidy up the column names and country values. Happiness deserves clean data.
+def process_whr_dataset(whr):
+    """Process the World Happiness Report dataset."""
+    # Rename columns for consistency
     whr.rename(columns={'Country name': 'Country', 'year': 'Year'}, inplace=True)
-    whr['Country'] = whr['Country'].str.replace(r'[^\w\s]', '', regex=True).str.strip()
-    return whr  # Happiness, cleaned and ready to analyze.
+    
+    # Remove non-alphanumeric characters from 'Country' column
+    whr['Country'] = whr['Country'].str.replace(r'[^\w\s]', '', regex=True)
+    
+    # Strip any leading/trailing spaces after cleaning
+    whr['Country'] = whr['Country'].str.strip()
+    
+    # Return the processed WHR DataFrame
+    return whr
 
 def process_tedi_dataset(tedi):
     """Transform and clean the Economist Democracy Index dataset."""
